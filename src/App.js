@@ -1,38 +1,27 @@
 import './App.css';
-import { Book } from './Book.js';
+import { useState } from 'react';
 
 function App() {
 
-  const books = [
-    {
-        title : "Reach 1 Kid",
-        description: "This is my book description",
-        purchased_date: true
-    },
+    const [age , setAge] = useState(0);
+  
+    return (
+            <div className="App"> 
+              <button onClick={() => {
+                  setAge(age + 1)
+              }}> Increase</button>
 
-    {
-      title : "Reach Kid",
-      description: "This is my book description",
-      purchased_date: false
-  },
+            <button onClick={() => {
+                  setAge(age - 1)
+              }}> Decrease</button>
 
-  {
-    title : "Reach 2 Kid",
-    description: "This is my book description",
-    purchased_date: true
-  },
+            <button onClick={() => {
+                      setAge(0)
+                  }}> Set to Zero</button>
+                  <p>{age}</p>
+            </div>
+    );
 
-];
-
-  return (
-    <div className="App">
-          {
-             books.map((book , key) => !book.purchased_date &&
-                 <Book key={key} title={ book.title } description={book.description} /> 
-             )
-          }
-    </div>
-  );
 }
 
 
