@@ -1,24 +1,39 @@
-import logo from './logo.svg';
 import './App.css';
+import { Book } from './Book.js';
 
-const isPurchased = false;
 function App() {
+
+  const books = [
+    {
+        title : "Reach 1 Kid",
+        description: "This is my book description",
+        purchased_date: true
+    },
+
+    {
+      title : "Reach Kid",
+      description: "This is my book description",
+      purchased_date: false
+  },
+
+  {
+    title : "Reach 2 Kid",
+    description: "This is my book description",
+    purchased_date: true
+  },
+
+];
+
   return (
     <div className="App">
-            <Book title="Rich Dad Poor Dad" description="This is a book from my finance hub" purchased_date={isPurchased ? "January 2" : ""} />
-            <Book title="Rich Dad Poor Dad 2" description="This is a book from my finance hub" purchased_date={isPurchased ? "January 2" : ""}/>
-            <Book title="Rich Dad Poor Dad 3" description="This is a book from my finance hub" purchased_date={isPurchased ? "January 2" : ""}/>
-            <Book title="Rich Dad Poor Dad 4" description="This is a book from my finance hub" purchased_date={isPurchased ? "January 2" : ""}/>
+          {
+             books.map((book , key) => !book.purchased_date &&
+                 <Book key={key} title={ book.title } description={book.description} /> 
+             )
+          }
     </div>
   );
 }
 
-const Book = (props) => {
-  return (
-         <>
-             <h1 className={isPurchased ? "colorRed" : "Black"}>{props.title}</h1><p>{props.purchased_date}</p> <p style={{ color: "gold" }}>{props.description}</p> <button>{isPurchased ? "Read Now" : ""}</button>
-         </>
-  );
-}
 
 export default App;
